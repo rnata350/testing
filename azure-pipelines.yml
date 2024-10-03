@@ -1,13 +1,16 @@
-
 trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-  - script: |
-      sudo apt-get update && sudo apt-get install -y python3-pip
-      pip3 install oci-cli
-    displayName: 'Install OCI CLI'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- script: |
+    sudo apt-get update && sudo apt-get install -y python3-pip
+    pip3 install oci-cli
+  displayName: 'Install OCI CLI'
 
